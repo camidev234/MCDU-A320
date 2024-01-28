@@ -9,9 +9,19 @@ import { AirportKey } from "./AirportKey";
 import { SlewKeys } from "./SlewKeys";
 import { NumbersKeys } from "./NumbersKeys";
 import { AlphaKeys } from "./AlphaKeys";
+import { useContext } from "react";
+import { BaseContext } from "../context/BaseContext";
+import { SelectAircraft } from "./SelectAircraft";
 
 export const Mcdu = () => {
-  return (
+
+  const {modalIsVisible } = useContext(BaseContext);
+
+  return modalIsVisible ? (
+    <div className="modal">
+      <SelectAircraft/>
+    </div>
+  ) : (
     <div className="bg-gray-600 w-[390px] h-[580px] rounded-md shadow-md">
       <div className="top flex w-full h-7">
         <div className="w-[20%] flex h-[100%]">
@@ -80,5 +90,5 @@ export const Mcdu = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
