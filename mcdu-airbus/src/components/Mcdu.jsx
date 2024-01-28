@@ -4,6 +4,7 @@ import { BsCircleFill } from "react-icons/bs";
 import { LeftButtons } from "./LeftButtons";
 import { RightButtons } from "./RightButtons";
 import { Display } from "./Display";
+import { PageKeys } from "./PageKeys";
 
 export const Mcdu = () => {
   return (
@@ -44,7 +45,11 @@ export const Mcdu = () => {
         <div className="w-[7%] h-full flex justify-end items-center">
           <div className="w-[50%] h-20 bg-gray-950 rounded-xl"></div>
         </div>
-        <div className="w-[86%] h-full"></div>
+        <div className="w-[86%] h-full">
+          <section className="w-full flex justify-center items-center mt-2">
+            <PageKeys/>
+          </section>
+        </div>
         <div className="w-[7%] h-full flex justify-start items-center">
           <div className="w-[50%] h-20 bg-gray-950 rounded-xl"></div>
         </div>
