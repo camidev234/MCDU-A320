@@ -9,13 +9,25 @@ import { AirportKey } from "./AirportKey";
 import { SlewKeys } from "./SlewKeys";
 import { NumbersKeys } from "./NumbersKeys";
 import { AlphaKeys } from "./AlphaKeys";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BaseContext } from "../context/BaseContext";
 import { SelectAircraft } from "./SelectAircraft";
 
 export const Mcdu = () => {
 
   const {modalIsVisible } = useContext(BaseContext);
+
+  const [textContent, setTextContent] = useState("");
+
+  const updateText = (letter) => {
+    setTextContent(textContent + letter);
+  };
+
+  const clrText = () => {
+    if (textContent.length > 0) {
+      setTextContent(textContent.slice(0, -1));
+    }
+  };
 
   return modalIsVisible ? (
     <div className="modal">
@@ -49,7 +61,7 @@ export const Mcdu = () => {
           <LeftButtons />
         </div>
         <div className="displayscreen w-[66%] flex justify-center items-center">
-          <Display />
+          <Display textContent={textContent}/>
         </div>
         <div className="rightbtn  w-[17%] h-[100%]">
           <RightButtons />
@@ -73,13 +85,13 @@ export const Mcdu = () => {
                 <SlewKeys/> 
               </article>
               <article className="numbers w-full h-[108px]">
-                <NumbersKeys/>
+                <NumbersKeys onUpdateText={updateText}/>
               </article>
             </section>
             <section className="right h-full w-[61%]">
               <article className="space w-full h-[7%]"></article>
               <article className="alpha w-full h-[93%]">
-                <AlphaKeys/>
+                <AlphaKeys onUpdateText={updateText} onClr={clrText}/>
               </article>
             </section>
             </div>
